@@ -36,14 +36,14 @@ size_t partition(std::vector<T> &arr, size_t start, size_t end) {
 }
 
 template <typename T>
-void quickSort(std::vector<T> &arr, size_t start, size_t end) {
+void quick_sort(std::vector<T> &arr, size_t start, size_t end) {
 	if (start >= end) {
 		return;
 	}
 
 	size_t p = partition(arr, start, end);
-	quickSort(arr, start, p - 1);
-	quickSort(arr, p + 1, end);
+	quick_sort(arr, start, p - 1);
+	quick_sort(arr, p + 1, end);
 }
 
 int main() {
@@ -55,7 +55,7 @@ int main() {
 	std::generate(begin(arr), end(arr), gen);
 	size_t n = arr.size();
 
-	quickSort(arr, 0, n - 1);
+	quick_sort(arr, 0, n - 1);
 	// std::for_each(arr.begin(), arr.end(), [](int x) { std::cout << x << " "; });
 	for (int a: arr) {
 		std::cout << a << " ";
