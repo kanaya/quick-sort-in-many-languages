@@ -32,7 +32,7 @@ size_t partition(std::vector<T> &arr, size_t start, size_t end) {
 			--j;
 		}
 	}
-	return pivotIndex;
+	return pivot_index;
 }
 
 template <typename T>
