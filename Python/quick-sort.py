@@ -1,11 +1,9 @@
-from typing import Any
-from collections.abc import MutableSequence, Callable
 import random
 
 def median3(x, y, z):
 	return max(min(x, y), min(max(x, y), z))
 
-def partition(seq: MutableSequence[Any], first: int, last: int):
+def partition(seq, first, last):
 	pivot = median3(seq[first], seq[first + (last - first) // 2], seq[last])
 	while True:
 		while seq[first] < pivot:
@@ -18,8 +16,8 @@ def partition(seq: MutableSequence[Any], first: int, last: int):
 		first += 1
 		last -= 1
 
-def quick_sort(seq: MutableSequence[Any]):
-	def quick_sort_impl(seq: MutableSequence, first: int, last: int):
+def quick_sort(seq):
+	def quick_sort_impl(seq, first, last):
 		while first < last:
 			p = partition(seq, first, last)
 			if (p - first) < (last - p):
