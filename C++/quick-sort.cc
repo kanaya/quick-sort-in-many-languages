@@ -1,8 +1,8 @@
 #include <algorithm>
-#include <cstdlib>
 #include <iterator>
 #include <iostream>
 #include <vector>
+#include <random>
 
 template <typename T>
 size_t partition(std::vector<T> &arr, size_t start, size_t end) {
@@ -48,7 +48,8 @@ void quick_sort(std::vector<T> &arr, size_t start, size_t end) {
 
 int main() {
 	auto gen = []() {
-		return std::rand() % 100;
+		std::random_device rnd;
+		return rnd() % 100;
 	};
 
 	std::vector<int> arr(100);
