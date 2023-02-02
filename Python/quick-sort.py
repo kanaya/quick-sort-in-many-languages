@@ -1,5 +1,6 @@
 from typing import Any
 from collections.abc import MutableSequence, Callable
+import random
 
 def median3(x, y, z):
 	return max(min(x, y), min(max(x, y), z))
@@ -32,6 +33,6 @@ def quick_sort(seq: MutableSequence[Any], keyFn: Callable[[Any], Any]):
 def id(x):
 	return x
 
-a = [3, 4, 5, 8, 1, 2, 10]
+a = [random.randrange(100) for x in range(0, 100)]
 quick_sort(a, id)
 print(a)
