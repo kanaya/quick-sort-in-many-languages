@@ -14,19 +14,19 @@ size_t partition(std::vector<T> &arr, size_t start, size_t end) {
 			++count;
 	}
 
-	size_t pivotIndex = start + count;
-	std::swap(arr[pivotIndex], arr[start]);
+	size_t pivot_index = start + count;
+	std::swap(arr[pivot_index], arr[start]);
 
 	size_t i = start, j = end;
 
-	while (i < pivotIndex && j > pivotIndex) {
+	while (i < pivot_index && j > pivot_index) {
 		while (arr[i] <= pivot) {
 			++i;
 		}
 		while (arr[j] > pivot) {
 			--j;
 		}
-		if (i < pivotIndex && j > pivotIndex) {
+		if (i < pivot_index && j > pivot_index) {
 			std::swap(arr[i], arr[j]);
 			++i;
 			--j;
