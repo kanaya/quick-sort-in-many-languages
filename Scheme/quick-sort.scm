@@ -1,4 +1,6 @@
 (use srfi-1)
+(use data.random)
+(use gauche.generator)
 
 (define (quick-sort f ls)
 	(if (null? ls)
@@ -10,4 +12,5 @@
 				(append before (cons x after))))))
 
 (define (main args)
-	(print (quick-sort < '(3 5 7 2 1 10))))
+	(let ([random-numbers (generator->list (integers$ 100 0) 100)])
+		(print (quick-sort < random-numbers))))
