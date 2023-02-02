@@ -56,8 +56,6 @@ int main() {
 	size_t n = arr.size();
 
 	quickSort(arr, 0, n - 1);
-	for (int i = 0; i < n; ++i) {
-		std::cout << arr[i] << " ";
-	}
+	std::for_each(arr.begin(), arr.end(), [](int x) { std::cout << x << " "; });
 	return 0;
 }
