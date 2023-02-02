@@ -15,5 +15,5 @@ generateRandomList :: Int -> IO [Int]
 generateRandomList n = sequence $ replicate n $ randomRIO (1,100::Int)
 
 someFunc :: IO ()
-someFunc = print <$> (quickSort <$> generateRandomList 100)
+someFunc = (quickSort <$> generateRandomList 100) >>= print
 
