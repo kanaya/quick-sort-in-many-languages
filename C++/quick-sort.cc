@@ -47,8 +47,8 @@ void quick_sort(std::vector<T> &arr, size_t start, size_t end) {
 }
 
 int main() {
-	auto gen = []() {
-		std::random_device rnd;
+	std::random_device rnd;
+	auto gen = [&rnd]() {
 		return rnd() % 100;
 	};
 
