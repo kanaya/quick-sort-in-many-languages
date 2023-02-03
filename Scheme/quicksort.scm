@@ -7,9 +7,9 @@
 		'()
 		(let ([x (car ls)]
 		      [xs (cdr ls)])
-			(let ([before (quick-sort (filter (lambda (y) (>= x y)) xs))]
-			      [after (quick-sort (filter (lambda (y) (< x y)) xs))])
-				(append before (cons x after))))))
+			(let ([left (quick-sort (filter (lambda (y) (< y x)) xs))]
+			      [right (quick-sort (filter (lambda (y) (>= y x)) xs))])
+				(append left (cons x right))))))
 
 (define (main args)
 	(let ([random-numbers (generator->list (integers$ 100 0) 100)])
