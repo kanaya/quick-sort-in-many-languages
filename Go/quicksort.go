@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func partition(arr []int, low, high int) ([]int, int) {
 	pivot := arr[high]
@@ -29,6 +32,16 @@ func quickSortStart(arr []int) []int {
 	return quickSort(arr, 0, len(arr)-1)
 }
 
+func randomValue(values []int) []int {
+    lenVaules := len(values)
+    for i := 0; i < lenVaules; i++ {
+        values[i] = rand.Intn(100)
+    }
+    return values
+}
+
 func main() {
-	fmt.Println(quickSortStart([]int{5, 6, 7, 2, 1, 0}))
+	arr := make([]int, 100)
+	randomValue(arr)
+	fmt.Println(quickSortStart(arr))
 }
