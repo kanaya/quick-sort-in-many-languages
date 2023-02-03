@@ -5,19 +5,19 @@
 #include <random>
 
 template <typename T>
-size_t partition(std::vector<T> &arr, size_t start, size_t end) {
+std::size_t partition(std::vector<T> &arr, std::size_t start, std::size_t end) {
 	T pivot = arr[start];
-	size_t count = 0;
+	std::size_t count = 0;
 
-	for (size_t i = start + 1; i <= end; ++i) {
+	for (std::size_t i = start + 1; i <= end; ++i) {
 		if (arr[i] <= pivot)
 			++count;
 	}
 
-	size_t pivot_index = start + count;
+	std::size_t pivot_index = start + count;
 	std::swap(arr[pivot_index], arr[start]);
 
-	size_t i = start, j = end;
+	std::size_t i = start, j = end;
 
 	while (i < pivot_index && j > pivot_index) {
 		while (arr[i] <= pivot) {
@@ -36,12 +36,12 @@ size_t partition(std::vector<T> &arr, size_t start, size_t end) {
 }
 
 template <typename T>
-void quick_sort(std::vector<T> &arr, size_t start, size_t end) {
+void quick_sort(std::vector<T> &arr, std::size_t start, std::size_t end) {
 	if (start >= end) {
 		return;
 	}
 
-	size_t p = partition(arr, start, end);
+	std::size_t p = partition(arr, start, end);
 	quick_sort(arr, start, p - 1);
 	quick_sort(arr, p + 1, end);
 }
@@ -59,7 +59,7 @@ int main() {
 
 	std::vector<int> arr(100);
 	std::generate(begin(arr), end(arr), gen);
-	size_t n = arr.size();
+	std::size_t n = arr.size();
 
 	start_quick_sort(arr);
 	for (int a: arr) {
