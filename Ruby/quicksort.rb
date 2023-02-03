@@ -18,5 +18,6 @@ def quicksort(seq)
 	return left + [pivot] + right
 end
 
-arr = [1,53,36,77,22,100,4,20]
+arr = []
+100.times{ arr << rand(100) }
 p(quicksort(arr))
