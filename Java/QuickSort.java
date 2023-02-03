@@ -1,12 +1,13 @@
 public class QuickSort {
-	static void quick_sort(int[] a, int start, int end) {
+	static void quick_sort_impl(int[] a, int start, int end) {
 		int pivot;
 		int w;
 		int s, e;
 		if (start >= end)
 			return;
-		if (1 == (end - start)) {
+		if ((end - start) == 1) {
 			if (a[start] > a[end]) {
+				// swap a[start] and a[end]
 				w = a[start];
 				a[start] = a[end];
 				a[end] = w;
@@ -16,33 +17,35 @@ public class QuickSort {
 		pivot = a[start];
 		s = start - 1;
 		e = end + 1;
-		for ( ; ; ) {
-			for ( ; ; ) {
+		while (true) {
+			while (true) {
 				++s;
 				if (a[s] >= pivot)
 					break;
 			}
-			for ( ; ; ) {
+			while (true) {
 				--e;
 				if (a[e] <= pivot)
 					break;
 			}
 			if (s >= e)
 				break;
+			// swap a[s] and a[e]
 			w = a[s];
 			a[s] = a[e];
 			a[e] = w;
 		}
-		if (s == e)
+		if (s == e) {
 			++s;
-		quick_sort(a, start, e);
-		quick_sort(a, s, end);
+		}
+		quick_sort_impl(a, start, e);
+		quick_sort_impl(a, s, end);
 	}
 
 	static void quick_sort(int[] a) {
-		if (1 >= a.length)
+		if (a.length <= 1)
 			return;
-		quick_sort(a, 0, a.length - 1);
+		quick_sort_impl(a, 0, a.length - 1);
 	}
 	public static void main(String[] args) {
 		int[] a;
