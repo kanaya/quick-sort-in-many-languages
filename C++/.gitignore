@@ -18,7 +18,7 @@ aclocal.m4
 compile
 config.cache
 config.guess
-config.h.in
+
 config.log
 config.status
 config.sub
@@ -28,6 +28,7 @@ depcomp
 install-sh
 missing
 stamp-h1
+autom4te.cache/
 
 # https://www.gnu.org/software/libtool/
 
