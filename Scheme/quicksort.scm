@@ -12,5 +12,5 @@
 				(append left (cons x right))))))
 
 (define (main args)
-	(let ([random-numbers (generator->list (integers$ 100 0) 100)])
-		(print (quick-sort random-numbers))))
+	(let ([arr (generator->list (integers$ 100 0) 100)])
+		(print (quick-sort arr))))

@@ -26,6 +26,6 @@ def quick_sort(arr, first, last):
 def start_quick_sort(arr):
 	quick_sort(arr, 0, len(arr) - 1)
 
-a = [random.randrange(100) for x in range(0, 100)]
-start_quick_sort(a)
-print(a)
+arr = [random.randrange(100) for x in range(0, 100)]
+start_quick_sort(arr)
+print(arr)
