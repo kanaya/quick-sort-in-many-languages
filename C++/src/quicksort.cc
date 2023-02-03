@@ -5,45 +5,43 @@
 #include <random>
 
 template <typename T>
-std::size_t partition(std::vector<T> &arr, std::size_t start, std::size_t end) {
-	T pivot = arr[start];
+std::size_t partition(std::vector<T> &arr, std::size_t begin, std::size_t end) {
+	T pivot = arr[begin];
 	std::size_t count = 0;
 
-	for (std::size_t i = start + 1; i <= end; ++i) {
+	for (std::size_t i = begin + 1; i <= end; ++i) {
 		if (arr[i] <= pivot)
 			++count;
 	}
 
-	std::size_t pivot_index = start + count;
-	std::swap(arr[pivot_index], arr[start]);
+	std::size_t it = begin + count;
+	std::swap(arr[it], arr[begin]);
 
-	std::size_t i = start, j = end;
+	std::size_t i = begin, j = end;
 
-	while (i < pivot_index && j > pivot_index) {
+	while (i < it && j > it) {
 		while (arr[i] <= pivot) {
 			++i;
 		}
 		while (arr[j] > pivot) {
 			--j;
 		}
-		if (i < pivot_index && j > pivot_index) {
+		if (i < it && j > it) {
 			std::swap(arr[i], arr[j]);
 			++i;
 			--j;
 		}
 	}
-	return pivot_index;
+	return it;
 }
 
 template <typename T>
-void quick_sort(std::vector<T> &arr, std::size_t start, std::size_t end) {
-	if (start >= end) {
-		return;
+void quick_sort(std::vector<T> &arr, std::size_t begin, std::size_t end) {
+	if (begin < end) {
+		std::size_t p = partition(arr, begin, end);
+		quick_sort(arr, begin, p - 1);
+		quick_sort(arr, p + 1, end);
 	}
-
-	std::size_t p = partition(arr, start, end);
-	quick_sort(arr, start, p - 1);
-	quick_sort(arr, p + 1, end);
 }
 
 template <typename T>
