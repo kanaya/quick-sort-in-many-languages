@@ -61,5 +61,6 @@ int main() {
 	for (int a: arr) {
 		std::cout << a << " ";
 	}
+	std::cout << std::endl;
 	return 0;
 }
