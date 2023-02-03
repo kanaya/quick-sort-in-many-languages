@@ -30,6 +30,9 @@ missing
 stamp-h1
 autom4te.cache/
 
+src/quicksort
+src/quicksort.o
+
 # https://www.gnu.org/software/libtool/
 
 ltmain.sh
