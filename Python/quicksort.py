@@ -1,10 +1,7 @@
 import random
 
-def median3(x, y, z):
-	return max(min(x, y), min(max(x, y), z))
-
 def partition(arr, first, last):
-	pivot = median3(arr[first], arr[first + (last - first) // 2], arr[last])
+	pivot = arr[first]
 	while True:
 		while arr[first] < pivot:
 			first += 1
