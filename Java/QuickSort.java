@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class QuickSort {
 	static void quick_sort_impl(int[] a, int start, int end) {
 		int pivot;
@@ -48,21 +50,10 @@ public class QuickSort {
 		quick_sort_impl(a, 0, a.length - 1);
 	}
 	public static void main(String[] args) {
-		int[] a;
-		a = new int[10];
-		a[ 0 ] =  4;
-		a[ 1 ] = 20;
-		a[ 2 ] = 15;
-		a[ 3 ] =  0;
-		a[ 4 ] = 12;
-		a[ 5 ] = 10;
-		a[ 6 ] =  7;
-		a[ 7 ] = 13;
-		a[ 8 ] =  8;
-		a[ 9 ] =  9;
-		quick_sort(a);
-		for (int i = 0; i < a.length; ++i) {
-			System.out.println(a[i]);
+		int[] arr = new Random().ints(100, 0, 100).toArray();
+		quick_sort(arr);
+		for (int i = 0; i < arr.length; ++i) {
+			System.out.println(arr[i]);
 		}
 	}
 }
