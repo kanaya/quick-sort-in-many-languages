@@ -1,15 +1,15 @@
-def quicksort(seq)
-	if seq.size == 0
-		return seq
+def quicksort(arr)
+	if arr.size == 0
+		return arr
 	end
-	pivot = seq[0]
+	pivot = arr[0]
 	right = Array.new
 	left = Array.new
-	for i in 1..seq.size-1
-		if seq[i] <= pivot
-			left.push(seq[i])
+	for i in 1..arr.size-1
+		if arr[i] <= pivot
+			left.push(arr[i])
 		else
-			right.push(seq[i])
+			right.push(arr[i])
 		end
 	end
 
