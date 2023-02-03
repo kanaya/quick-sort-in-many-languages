@@ -46,6 +46,11 @@ void quick_sort(std::vector<T> &arr, size_t start, size_t end) {
 	quick_sort(arr, p + 1, end);
 }
 
+template <typename T>
+void start_quick_sort(std::vector<T> &arr) {
+	quick_sort(arr, 0, arr.size() - 1);
+}
+
 int main() {
 	std::random_device rnd;
 	auto gen = [&rnd]() {
@@ -56,8 +61,7 @@ int main() {
 	std::generate(begin(arr), end(arr), gen);
 	size_t n = arr.size();
 
-	quick_sort(arr, 0, n - 1);
-	// std::for_each(arr.begin(), arr.end(), [](int x) { std::cout << x << " "; });
+	start_quick_sort(arr);
 	for (int a: arr) {
 		std::cout << a << " ";
 	}
