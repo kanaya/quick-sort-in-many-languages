@@ -43,14 +43,16 @@ int main() {
 		return rnd() % 100;
 	};
 
-	std::vector<int> arr(10);
+	std::vector<int> arr(100);
 	std::generate(begin(arr), end(arr), gen);
+	std::cout << "In: ";
 	for (int a: arr) {
 		std::cout << a << " ";
 	}
 	std::cout << std::endl;
 
 	quick_sort(arr.begin(), arr.end());
+	std::cout << "Out: ";
 	for (int a: arr) {
 		std::cout << a << " ";
 	}
