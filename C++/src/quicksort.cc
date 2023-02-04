@@ -7,12 +7,7 @@
 template <typename Iterator, typename T = typename Iterator::value_type>
 auto partition(Iterator begin, Iterator end) {
 	T pivot = *begin;
-	std::size_t count = 0;
-	for (auto p = begin + 1; p != end; ++p) {
-		if (*p <= pivot) {
-			++count;
-		}
-	}
+	std::size_t count = std::count_if(begin + 1, end, [pivot](T x){ return x <= pivot; });
 	auto it = begin + count;
 	std::swap(*it, *begin);
 	auto i = begin;
