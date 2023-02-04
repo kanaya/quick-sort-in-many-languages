@@ -86,7 +86,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = quicksort$(EXEEXT) quicksort2$(EXEEXT)
+bin_PROGRAMS = quicksort$(EXEEXT)
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -102,9 +102,6 @@ PROGRAMS = $(bin_PROGRAMS)
 am_quicksort_OBJECTS = quicksort.$(OBJEXT)
 quicksort_OBJECTS = $(am_quicksort_OBJECTS)
 quicksort_LDADD = $(LDADD)
-am_quicksort2_OBJECTS = quicksort2.$(OBJEXT)
-quicksort2_OBJECTS = $(am_quicksort2_OBJECTS)
-quicksort2_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -120,8 +117,7 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/quicksort.Po \
-	./$(DEPDIR)/quicksort2.Po
+am__depfiles_remade = ./$(DEPDIR)/quicksort.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -136,8 +132,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(quicksort_SOURCES) $(quicksort2_SOURCES)
-DIST_SOURCES = $(quicksort_SOURCES) $(quicksort2_SOURCES)
+SOURCES = $(quicksort_SOURCES)
+DIST_SOURCES = $(quicksort_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -255,7 +251,6 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 quicksort_SOURCES = quicksort.cc
-quicksort2_SOURCES = quicksort2.cc
 all: all-am
 
 .SUFFIXES:
@@ -336,10 +331,6 @@ quicksort$(EXEEXT): $(quicksort_OBJECTS) $(quicksort_DEPENDENCIES) $(EXTRA_quick
 	@rm -f quicksort$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(quicksort_OBJECTS) $(quicksort_LDADD) $(LIBS)
 
-quicksort2$(EXEEXT): $(quicksort2_OBJECTS) $(quicksort2_DEPENDENCIES) $(EXTRA_quicksort2_DEPENDENCIES) 
-	@rm -f quicksort2$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(quicksort2_OBJECTS) $(quicksort2_LDADD) $(LIBS)
-
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -347,7 +338,6 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quicksort.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quicksort2.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -496,7 +486,6 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 		-rm -f ./$(DEPDIR)/quicksort.Po
-	-rm -f ./$(DEPDIR)/quicksort2.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -543,7 +532,6 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 		-rm -f ./$(DEPDIR)/quicksort.Po
-	-rm -f ./$(DEPDIR)/quicksort2.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
