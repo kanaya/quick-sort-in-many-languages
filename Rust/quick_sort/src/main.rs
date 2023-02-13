@@ -1,6 +1,12 @@
+use rand::prelude::*;
+
 fn main() {
+    let mut rng = rand::thread_rng();
+    let mut nums: Vec<i32> = (1..100).collect();
+    nums.shuffle(&mut rng);
+
     println!("Sort numbers ascending");
-    let mut numbers = [4, 65, 2, -31, 0, 99, 2, 83, 782, 1];
+    let mut numbers = nums;
     println!("Before: {:?}", numbers);
     quick_sort(&mut numbers);
     println!("After:  {:?}\n", numbers);
