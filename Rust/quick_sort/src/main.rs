@@ -2,20 +2,12 @@ use rand::prelude::*;
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let mut nums: Vec<i32> = (1..100).collect();
-    nums.shuffle(&mut rng);
+    let mut arr: Vec<i32> = (1..100).collect();
+    arr.shuffle(&mut rng);
 
-    println!("Sort numbers ascending");
-    let mut numbers = nums;
-    println!("Before: {:?}", numbers);
-    quick_sort(&mut numbers);
-    println!("After:  {:?}\n", numbers);
-
-    println!("Sort strings alphabetically");
-    let mut strings = ["beach", "hotel", "airplane", "car", "house", "art"];
-    println!("Before: {:?}", strings);
-    quick_sort(&mut strings);
-    println!("After:  {:?}\n", strings);
+    println!("Before: {:?}", arr);
+    quick_sort(&mut arr);
+    println!("After:  {:?}\n", arr);
 }
 
 pub fn quick_sort<T: Ord>(arr: &mut [T]) {
