@@ -5,9 +5,8 @@ fn main() {
     let mut arr: Vec<i32> = (1..100).collect();
     arr.shuffle(&mut rng);
 
-    println!("Before: {:?}", arr);
     quick_sort(&mut arr);
-    println!("After:  {:?}\n", arr);
+    println!("{:?}\n", arr);
 }
 
 pub fn quick_sort<T: Ord>(arr: &mut [T]) {
