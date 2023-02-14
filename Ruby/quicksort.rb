@@ -1,12 +1,12 @@
 def quicksort(arr)
-	if arr.size == 0
+	if arr.size <= 0
 		return arr
 	end
-	pivot = arr[0]
+	x = arr[0]
 	right = Array.new
 	left = Array.new
 	for i in 1..arr.size-1
-		if arr[i] <= pivot
+		if arr[i] <= x
 			left.push(arr[i])
 		else
 			right.push(arr[i])
@@ -15,7 +15,7 @@ def quicksort(arr)
 
 	left = quicksort(left)
 	right = quicksort(right)
-	return left + [pivot] + right
+	return left + [x] + right
 end
 
 arr = []

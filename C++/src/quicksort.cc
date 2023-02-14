@@ -4,51 +4,37 @@
 #include <vector>
 #include <random>
 
-template <typename T>
-std::size_t partition(std::vector<T> &arr, std::size_t start, std::size_t end) {
-	T pivot = arr[start];
-	std::size_t count = 0;
-
-	for (std::size_t i = start + 1; i <= end; ++i) {
-		if (arr[i] <= pivot)
-			++count;
-	}
-
-	std::size_t pivot_index = start + count;
-	std::swap(arr[pivot_index], arr[start]);
-
-	std::size_t i = start, j = end;
-
-	while (i < pivot_index && j > pivot_index) {
-		while (arr[i] <= pivot) {
+template <typename Iterator, typename T = typename Iterator::value_type>
+auto partition(Iterator begin, Iterator end) {
+	T pivot = *begin;
+	std::size_t count = std::count_if(begin + 1, end, [pivot](T x){ return x <= pivot; });
+	auto it = begin + count;
+	std::swap(*it, *begin);
+	auto i = begin;
+	auto j = end - 1;
+	while (std::distance(it, i) < 0 && std::distance(it, j) > 0) {
+		while (*i <= pivot) {
 			++i;
 		}
-		while (arr[j] > pivot) {
+		while (*j > pivot) {
 			--j;
 		}
-		if (i < pivot_index && j > pivot_index) {
-			std::swap(arr[i], arr[j]);
+		if (std::distance(it, i) < 0 && std::distance(it, j) > 0) {
+			std::swap(*i, *j);
 			++i;
 			--j;
 		}
 	}
-	return pivot_index;
+	return it;
 }
 
-template <typename T>
-void quick_sort(std::vector<T> &arr, std::size_t start, std::size_t end) {
-	if (start >= end) {
-		return;
+template <typename Iterator>
+void quick_sort(Iterator begin, Iterator end) {
+	if (begin != end) {
+		auto p = partition(begin, end);
+		quick_sort(begin, p);
+		quick_sort(p + 1, end);
 	}
-
-	std::size_t p = partition(arr, start, end);
-	quick_sort(arr, start, p - 1);
-	quick_sort(arr, p + 1, end);
-}
-
-template <typename T>
-void start_quick_sort(std::vector<T> &arr) {
-	quick_sort(arr, 0, arr.size() - 1);
 }
 
 int main() {
@@ -59,9 +45,14 @@ int main() {
 
 	std::vector<int> arr(100);
 	std::generate(begin(arr), end(arr), gen);
-	std::size_t n = arr.size();
+	std::cout << "In: ";
+	for (int a: arr) {
+		std::cout << a << " ";
+	}
+	std::cout << std::endl;
 
-	start_quick_sort(arr);
+	quick_sort(arr.begin(), arr.end());
+	std::cout << "Out: ";
 	for (int a: arr) {
 		std::cout << a << " ";
 	}

@@ -5,31 +5,27 @@ import (
 	"math/rand"
 )
 
-func partition(arr []int, low, high int) ([]int, int) {
-	pivot := arr[high]
-	i := low
-	for j := low; j < high; j++ {
+func partition(arr []int, begin, end int) ([]int, int) {
+	pivot := arr[begin]
+	i := begin
+	for j := begin + 1; j < end; j++ {
 		if arr[j] < pivot {
 			arr[i], arr[j] = arr[j], arr[i]
 			i++
 		}
 	}
-	arr[i], arr[high] = arr[high], arr[i]
+	arr[i], arr[end] = arr[begin], arr[i]
 	return arr, i
 }
 
-func quickSort(arr []int, low, high int) []int {
-	if low < high {
+func quickSort(arr []int, begin, end int) []int {
+	if begin < end {
 		var p int
-		arr, p = partition(arr, low, high)
-		arr = quickSort(arr, low, p-1)
-		arr = quickSort(arr, p+1, high)
+		arr, p = partition(arr, begin, end)
+		arr = quickSort(arr, begin, p - 1)
+		arr = quickSort(arr, p + 1, end)
 	}
 	return arr
-}
-
-func quickSortStart(arr []int) []int {
-	return quickSort(arr, 0, len(arr)-1)
 }
 
 func randomValue(values []int) []int {
@@ -43,5 +39,5 @@ func randomValue(values []int) []int {
 func main() {
 	arr := make([]int, 100)
 	randomValue(arr)
-	fmt.Println(quickSortStart(arr))
+	fmt.Println(quickSort(arr, 0, len(arr) - 1))
 }
